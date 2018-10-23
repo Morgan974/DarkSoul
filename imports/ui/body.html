@@ -1,0 +1,99 @@
+<!-- 
+    Voici votre Body
+    C'est ici que apparaitra toutes vos informations
+    
+    Etape 3 :
+    Commencer par crée votre Balise <body></body>
+    à l'intérieure crée un <h1>BONJOUR!</h1>
+
+    On va maintenant crée les liens entre nos différents fichiers.
+    D'abord le principal:
+        On vas lié nos deux fichier js: main.js et body.js.
+            [ INFORMATION : le main.js est le fichier qui est lu en 1er]
+
+            main.js, l.26, import '../imports/ui/body.js'
+
+    Ensuite on va lier le body.js au body.html
+            body.js, l.1, import './body.html'
+
+    Normalement vous devez voir apparaitre le titre sur le navigateur :)
+
+    Etape 4:
+    Mise en place des Templates
+
+    Pour integrer un "Template" on a plusieurs moyens :
+
+        Moyen 1: on crée un "Template" directement dans le body.
+            (Exemple 1)
+        [ VOIR body.html, l.52 ]
+
+        Moyen 2: on crée un fichier 'nomduTemplate.html' et on le lie au body.js, import './nomduFichier.html'
+            (Exemple 2)
+        [ VOIR Exemple2.html]
+
+        Moyen 3: on crée deux fichiers 'nomduTemplate.html' et 'nomduTemplate.Js'
+        et on lie le 'body.js' au 'nomduTemplate.js', import './nomduTemplate.js',
+        puis on lie le 'nomduTemplate.js' au 'nomduTemplate.hmtml', import './nomduTemplate.html'
+            (Exemple 3)
+        [VOIR Exemple3.html]
+
+        [INFORMATION : Le moyen 3 est recomandé car marche à tous les coups]
+
+        Pour que votre Templates apparaisse n'oubliez pas le spacebar {{> nomduTemplate}}
+
+    Etape 5:
+    Mise en place d'une Collection (MongoDB)
+        Pour mettre en place une collection (une banque de donnée),
+        Il faut d'abord crée un fichier 'nomdelaCollection.js' dans 'imports/api/nomdelaCollection.js'
+        [ALLER VOIR 'collection.js' dans imports/api/collection.js]
+    
+        Suite :
+        Pour continuer, on intégre dans le "body.js",
+        
+                import { Template } from 'meteor/templating'
+
+                Template.body.helpers({
+                    information() {
+                    return Collection.find({});
+                    },
+                });
+        
+        Et dans le fichier "body.html", on crée une boucle Each
+        (qui traite les info par entrée)
+                
+                {#each information}}
+                    {{> nomduTemplate}}
+                {{/each}}
+
+                voir plus bas l.83 à 85
+
+        *information, 'api/Collection.js', l.14
+        *nomduTemplate, est le Template qui se chargera d'afficher les informations
+        (c'est dans ce Template qu'on crée la "card")
+        
+    Etape 6 : voir fichier carte.html (il faut le crée ainsi que le carte.js)
+-->
+
+<body>
+    <h1>BONJOUR!</h1>
+
+    {{> Model1}} <!-- Template sur le body-->
+    {{> Model2}} <!-- Template sur un fichier nomduTemplate.html-->
+    {{> Model3}} <!-- Template sur un fichier nomduTemplate.html et un lien avec un nomduTemplate.js -->
+
+    {{> formulaire}}
+
+    {{#each information}}
+        {{> carte}} <!-- template "carte", affichera les informations-->
+    {{/each}}
+</body>
+
+    <!--
+        Moyen 1 :
+        ici le template = Exemple1
+    -->
+<template name='Model1'>
+    <h2>Exemple 1</h2>
+    <p>Methode 1 : Template dans le body</p>
+</template>
+

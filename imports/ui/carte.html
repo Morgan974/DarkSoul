@@ -1,0 +1,37 @@
+<template name='carte'>
+    <div class="card"> <!-- "card" et "card-body" sont des class de Bootstrap-->
+        <div class="card-body">
+            <button class="delete">&times;</button> <!-- ETAPE 8-->
+            <h1>Carte d'information</h1>
+            <p>Template carte qui affiche des informations</p>
+            <p>{{text}}</p>
+        </div>
+    </div>
+</template>
+
+<!-- 
+    Etape 6:
+    On crée le Template qui affichera les informations
+    on n'oublie pas de faire les liens entre les fichiers.
+            (ici "carte.html" à "carte.js" et "carte.js" à "body.js")
+
+
+    Pour vérifier que que l'etpe 5 c'est bien passé,
+    on vas passé par un nouveau "Terminal", dans celui-ci entré "meteor mongo"
+    puis rentrer cette phrase là : 
+    "db.information.insert({ text: "L'étape 5 marche!", createdAt: new Date() });"
+    
+    SI ça s'affiche c'est qua ça marche! 
+
+    Attention n'oubliez pas d'installer Bootstrap v4:
+        meteor add alexwine:bootstrap-4
+
+    Etape 7: voir "formulaire.html" (il faut le crée, ainsi que "formulaire.js")
+
+    Etape 8:
+    On vas rajouter un bouton pour pouvoir supprimer la carte
+    sous la forme:
+    <button class="delete">&times;</button>
+        &times; est egale à une X
+
+-->
