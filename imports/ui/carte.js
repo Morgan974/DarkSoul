@@ -15,5 +15,7 @@ Template.carte.events({
         Collection.remove(this._id); 
         //on vas dans la "Collection" puis on supprime l'information qui correspond au bouton.
         //this._id = à l'endroit ou le bouton se trouve
+
+        //FIN de la 1er partie
     },
 });
